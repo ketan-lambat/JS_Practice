@@ -2,13 +2,22 @@
 // Age in Days
 
 function getAgeInDays() {
-    var birthYear = prompt("What year were you born friend?");
-    var ageInDays = (2020 - birthYear) * 365;
-    var h1 = document.createElement('h1');
-    var textAns = document.createTextNode('You are : ' + ageInDays + ' days old.');
-    h1.setAttribute('id', 'ageInDays');
-    h1.appendChild(textAns);
-    document.getElementById('flex-box-result').appendChild(h1);
+    var dob = document.getElementById('dob').value;
+    // console.log(dob);
+    let today = new Date();
+    let birthDay = new Date(dob);
+    if (birthDay > today) {
+        alert("Enter a valid date of Birth");
+    } else {
+        // console.log(today);
+        // console.log(birthDay);
+        let ageInDays = Math.round((today - birthDay) / (1000 * 60 * 60 * 24));
+        var h1 = document.createElement('h1');
+        var textAns = document.createTextNode('You are : ' + ageInDays + ' days old.');
+        h1.setAttribute('id', 'ageInDays');
+        h1.appendChild(textAns);
+        document.getElementById('flex-box-result').appendChild(h1);
+    }
 }
 
 function resetAgeCalc() {
